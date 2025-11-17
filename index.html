@@ -2,196 +2,237 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <title>Para Mi AMOR</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carta para Eve </title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-      background: #0f0f0f;
-      font-family: 'Segoe UI', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      min-height: 100vh;
       margin: 0;
-      padding: 2rem 1rem;
+      padding: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: #fffafc;
+      color: #333;
+      text-align: center;
     }
 
-    .envelope {
-      width: 320px;
-      height: 200px;
-      position: relative;
+    header {
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #f8d3e0, #ffe9f3);
+    }
+
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 48px;
+      color: #c14f79;
+    }
+
+    .button {
+      margin-top: 20px;
+      background-color: #c14f79;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 18px;
+      border-radius: 8px;
       cursor: pointer;
-      perspective: 1000px;
-      margin-top: 40px;
     }
 
-    .flap {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: #eeeed4;
-      transform-origin: top;
-      transition: transform 1s;
-      z-index: 3;
-      clip-path: polygon(0 0, 100% 0, 50% 50%);
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
+    .section {
+      padding: 40px 20px;
     }
 
-    .body {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: #00aa88;
-      z-index: 2;
-      border-radius: 10px;
-      overflow: hidden;
+    .section h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 36px;
+      color: #c14f79;
     }
 
-    .letter {
-      position: absolute;
-      width: 100%;
-      height: auto;
-      background: #ffffff;
-      top: 160px;
-      left: 0;
-      transition: top 1s, opacity 0.5s, z-index 0s 1s;
-      z-index: 0;
-      opacity: 0;
+    .photo {
+      width: 90%;
+      max-width: 400px;
+      margin: 20px auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .message {
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    footer {
+      margin-top: 50px;
       padding: 20px;
-      color: #222;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+      background-color: #fce4ec;
+      color: #c14f79;
     }
+ .petalos-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 999;
+  }
 
-    .envelope.open .flap {
-      transform: rotateX(-180deg);
-    }
-
-    .envelope.open .letter {
-      top: -100px;
-      z-index: 5;
-      opacity: 1;
-      transition: top 1s, opacity 0.5s, z-index 0s;
-    }
-
-    h1 {
-      margin-top: 0;
-      color: #00aa88;
-      font-size: 1.6rem;
-    }
-
-    .signature {
-      margin-top: 2rem;
-      text-align: right;
-      font-style: italic;
-      color: #555;
-    }
-
-    .terminal {
-      background: #000;
-      color: #00ffcc;
-      font-family: 'Courier New', monospace;
-      padding: 10px;
-      border-radius: 5px;
-      margin-top: 10px;
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 600px) {
-      .envelope {
-        width: 100%;
-        height: 65vw;
-      }
-
-      .letter {
-        font-size: 1.1rem;
-        padding: 24px;
-        top: 140px;
-      }
-
-      h1 {
-        font-size: 1.6rem;
-      }
-
-      .terminal {
-        font-size: 1rem;
-      }
-    }
-
-
-
-.instruccion {
-  color: #00ffcc;
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  animation: blink 2s infinite;
-  text-align: center;
+  .petalo {
+  position: absolute;
+  width: 12px;
+  height: 18px;
+  background: red;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(45deg);
+  animation: caer linear infinite;
+  pointer-events: none;
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
+
+  @keyframes caer {
+    0% {
+      transform: translateY(-100px) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.9;
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+
 
   </style>
-</head>
-<body>
-<div class="instruccion">✅ Toca el sobre</div>
-  <div class="envelope" onclick="this.classList.toggle('open')">
-    <div class="flap"></div>
-    <div class="body"></div>
-    <div class="letter">
-      <h1>Hola Eve 🌟</h1>
-      <p>
-       LEER DETENIDAMENTE.
-        TOMATE TU TIEMPO .
-      </p>
-      <p>
-        Quería contarte algo importante sobre la <strong>Mac</strong>:
-      </p>
-      <div class="terminal">
-        $ verdad_mac <br>
-       → Recuerdas que te dije que habia pasado una situaciòn con la mac pero todo estaba bajo control. 😅<br><br>
-        → Tal vez no te lo dije en su momento por pena, a como fueras a reaccionar.<br><br>
-        → Bueno ,la lap que adquiriste con tu tio, tuvo un pequeño problema,tenia cuenta de icloud vinculada, no lo note y al conectarla a internet se bloqueo, por que tenia reporte de robo.(funcionaba por que no la habian conectado a internet).<br><br>
-     
-        → Entonces me di a la tarea de adquirir otra de uso, que es la que actualmente tienes, sabes yo te la obsequie por que te vi ilusionada ,por que quise entregar algo que si te funcionara,
-         y vi que realmente tienes el deseo de salir adelante y solo quise hacerlo sin ninguna expectativa ,por que hay algo especial en ti. (pero entiendo todo perfectamente ,sabes ),
-          solo tomala como un obsequio de graduaciòn de mi parte.<br><br>
-        → Y con esto no quiero que te sientas comprometida conmigo, tampoco busco comprar tu compañia ,dinero, aprovaciòn,presionarte u obligarte a cosas que no quieras ,presumir y mucho menos que te sienta incomoda o mal, yo lo hice por que me nacio regalartela  .<br><br>
-        
-         → Espero no me lo tomes a mal ,yo se que tal vez lo veas raro, o sientas no merecerla o te de miedo y lo entiendo ,pero que quede claro que te lo estoy diciendo ,no por que busque algo a cambio(eso se da solo .)<br><br><br>
-          →SOLO VOY A PEDIRTE 3 COSAS<br><br>
-            →APROVECHALA AL MAXIMO Y CUIDALA MUCHO.<br><br>
-            →NO OLVIDES DE DONDE PROVINO.<br><br>
-            →QUE QUEDE ENTRE NOSOTROS (no quiero que se den malas interpretaciones.)<br><br>
-            
-      </div>
-      <p>
-        
-        Esto lo hice con cariño y honestidad,
-        Y tu sabras que hacer al respecto. 
-        Que tengas excelente dia.
-      </p>
-      <p class="signature">
-      
-       "A quien obra bien, Dios lo guía, lo protege… y cuando menos lo espera, le da mucho más de lo que un día soñó."
 
-        ISC Luis Andres Cruz Merlin. 
-      </p>
+</head>
+
+<body>
+ <div class="petalos-container"></div>
+<script>
+  const container = document.querySelector('.petalos-container');
+
+  function crearPetalo() {
+    const petalo = document.createElement('div');
+    petalo.classList.add('petalo');
+    petalo.style.left = Math.random() * 100 + 'vw';
+    petalo.style.animationDuration = 6 + Math.random() * 4 + 's';
+    petalo.style.opacity = Math.random();
+    petalo.style.transform = `rotate(${Math.random() * 360}deg)`;
+    container.appendChild(petalo);
+
+    setTimeout(() => {
+      petalo.remove();
+    }, 10000);
+  }
+
+  setInterval(crearPetalo, 400);
+</script>
+
+  <header>
+    <h1>Para alguien muy especial...</h1>
+   <!-- <button class="button" onclick="document.getElementById('recuerdos').scrollIntoView({behavior:'smooth'})">Ver recuerdos</button>-->
+  </header>
+
+  <section class="section" id="recuerdos">
+    <h2>Momentos que no olvido</h2>
+
+<div id="carouselExampleCaptions" class="carousel slide"style="max-width: 400px; margin: auto;" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="10000">
+      <img src="adriyyo.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Recuerdos </h5>
+        <p>2025.</p>
+      </div>
+    </div>
+    <div class="carousel-item" data-bs-interval="10000">
+      <img src="cinepolis.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>cine</h5>
+        <p>2025</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="broklin.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>broklyn</h5>
+        <p>2025</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="andamar.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>andamar</h5>
+        <p>2025</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="oxxo.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>bronco-oxxo</h5>
+        <p>2025</p>
+      </div>
     </div>
   </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+
+
+    
+   <br><p class="message">Dios nunca te quita algo sin tener preparado algo más grande para tu vida. Eres fuerte, eres luz… y yo estoy contigo en cada paso."</p>
+  </section>
+
+  <section class="section">
+    <h2>Un mensaje para ti</h2>
+    <p class="message">
+
+ Mi amor, hoy cumplimos un mes… y no sabes cuánto agradezco que Dios te haya puesto en mi camino.
+En solo treinta días cambiaste mi vida de una forma que no imaginaba: me enseñaste lo que es la paz, la confianza, el cariño sincero y ese amor que sana heridas que uno creía que nunca iban a cerrar.<br>
+
+Tú, Adri, eres una mujer extraordinaria.
+Fuerte, noble, valiente… con un corazón que, a pesar de todo lo que has vivido, sigue dando amor sin miedo. Te admiro más de lo que puedo expresar, y agradezco cada detalle tuyo, cada sonrisa, cada abrazo que me devuelve el alma al cuerpo.<br>
+
+Gracias por elegirme, por abrirme tu vida, por confiar en mí, por dejarme acompañarte en tus días buenos y también en los difíciles.
+Yo estoy aquí para ti, hoy y siempre.
+Para cuidarte, apoyarte, escucharte, y amarte como tú mereces.<br>
+
+Feliz primer mes, mi princesa.
+Ojalá la vida nos siga permitiendo construir cosas bonitas juntos.
+Eres lo mejor que me ha pasado, y este mes a tu lado es apenas el comienzo de algo grande.<br>
+
+Te amo.
+       
+    </p>
+  </section>
+
+  <footer>
+    Con cariño, Luis
+  </footer>
+
+
+
+
 </body>
 </html>
-
-
-
-
-
-
